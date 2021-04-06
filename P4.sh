@@ -1,19 +1,20 @@
-#include <stdio.h>
-#include <dirent.h>
-  
-int main()
-{
-    struct dirent *de;  
-    DIR *dr = opendir(".");
-  
-    if (dr == NULL)  
-    {
-        printf("Could not open current directory" );
-        return 0;
-    }
-    while ((de = readdir(dr)) != NULL)
-            printf("%s\n", de->d_name);
-  
-    closedir(dr);    
-    return 1;
-}
+echo -n "Enter number : "
+read n
+sd=0 
+rev=""
+on=$n
+ 
+while [ $n -gt 0 ]
+do
+    sd=$(( $n % 10 )) 
+    n=$(( $n / 10 ))  
+    
+    rev=$( echo ${rev}${sd} ) 
+done
+ 
+if [ $on -eq $rev ];
+then
+  echo "Number is palindrome"
+else
+  echo "Number is NOT palindrome"
+fi
